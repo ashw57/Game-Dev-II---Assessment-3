@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+using System.Collections;
 
 public class PlayerMotor : MonoBehaviour
 {
@@ -51,6 +53,7 @@ public class PlayerMotor : MonoBehaviour
     public const string WALK = "DS_onehand_walk";
     public const string ATTACK1 = "DS_onehand_attack_A";
     public const string ATTACK2 = "DS_onehand_attack_B";
+    //public const string BLOCK = "CharacterArmature|Sword_Block";
 
     string currentAnimationState;
 
@@ -78,16 +81,43 @@ public class PlayerMotor : MonoBehaviour
     //This will receive the inputs for our Input Manager and apply them to our character controller.
     public void ProcessMove(Vector2 input)
     {
+        if (attacking) return;
+
         Vector3 moveDirection = Vector3.zero;
-        moveDirection.x = input.x;
-        moveDirection.z = input.y;
-        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
-        playerVelocity.y += gravity * Time.deltaTime;
-        if(isGrounded && playerVelocity.y < 0)
-            playerVelocity.y = -2f;
+
+        // Get the direction the player is facing in world space
+        Vector3 forward = transform.forward;
+        Vector3 right = transform.right;
+
+        // Apply input relative to the player's facing direction (local space)
+        moveDirection += forward * input.y;  // Forward/backward
+        moveDirection += right * input.x;    // Left/right
+
+        // Normalize the direction to prevent faster diagonal movement
+        moveDirection.Normalize();
+
+        // Update player velocity based on movement direction
+        playerVelocity.x = moveDirection.x * speed;
+        playerVelocity.z = moveDirection.z * speed;
+
+        // Apply movement using CharacterController (in world space)
         controller.Move(playerVelocity * Time.deltaTime);
-        Debug.Log(playerVelocity.y);
+
+        // Handle gravity (y velocity)
+        playerVelocity.y += gravity * Time.deltaTime;
+
+        if (isGrounded && playerVelocity.y < 0)
+            playerVelocity.y = -2f;
+
+        // Apply gravity
+        controller.Move(playerVelocity * Time.deltaTime);
+
+        // Debug logging for velocity
+        Debug.Log($"X Velocity: {playerVelocity.x}, Z Velocity: {playerVelocity.z}, Y Velocity: {playerVelocity.y}");
     }
+
+
+
 
     public void Jump()
     {
@@ -101,6 +131,8 @@ public class PlayerMotor : MonoBehaviour
 
         readyToAttack = false;
         attacking = true;
+
+        StartCoroutine(SlowToAttack());
 
         Invoke(nameof(ResetAttack), attackSpeed);
         Invoke(nameof(AttackRaycast), attackDelay);
@@ -171,4 +203,30 @@ public class PlayerMotor : MonoBehaviour
             else { ChangeAnimationState(WALK); }
         }
     }
+
+    private IEnumerator SlowToAttack()
+    {
+        // Set a smooth deceleration speed for the velocity.
+        float decelerationSpeed = 5f;  // You can adjust this to make it faster/slower
+
+        // Continuously reduce the player's velocity
+        while (Mathf.Abs(playerVelocity.x) > 0.01f || Mathf.Abs(playerVelocity.z) > 0.01f)
+        {
+            // Smoothly reduce the velocity
+            playerVelocity.x = Mathf.Lerp(playerVelocity.x, 0f, decelerationSpeed * Time.deltaTime);
+            playerVelocity.z = Mathf.Lerp(playerVelocity.z, 0f, decelerationSpeed * Time.deltaTime);
+
+            // Apply the movement after adjusting the velocity
+            controller.Move(playerVelocity * Time.deltaTime);
+
+            // Wait for the next frame
+            yield return null;
+        }
+
+        // After the velocity is near zero, we can explicitly set it to zero to stop any tiny remaining movement
+        playerVelocity.x = 0f;
+        playerVelocity.z = 0f;
+    }
+
+
 }
