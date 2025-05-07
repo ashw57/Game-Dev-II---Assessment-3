@@ -4,9 +4,11 @@ using UnityEngine;
 
 public enum EnemyType
 {
-    Tank,
-    Ranger,
-    Basic
+    Bonnie,
+    Chica,
+    Foxy,
+    Freddy,
+    GoldenFreddy
 }
 public class EnemyManager : Singleton<EnemyManager>
 {
@@ -16,11 +18,15 @@ public class EnemyManager : Singleton<EnemyManager>
 
     [Header("EnemyLists")] //This is the folders ill be storing the enemies in
     [SerializeField]
-    private List<GameObject> tankPrefabs;
+    private GameObject freddyPrefab;
     [SerializeField]
-    private List<GameObject> rangerPrefabs;
+    private GameObject bonniePrefab;
     [SerializeField]
-    private List<GameObject> basicPrefabs;
+    private GameObject chicaPrefab;
+    [SerializeField]
+    private GameObject foxyPrefab;
+    [SerializeField]
+    private GameObject goldenFreddyPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,21 +42,33 @@ public class EnemyManager : Singleton<EnemyManager>
             return;
         }
 
-        if (tankPrefabs == null)
+        if (freddyPrefab == null)
         {
-            Debug.LogError("No Tanks found in list");
+            Debug.LogError("Freddy was not found");
             return;
         }
 
-        if (rangerPrefabs == null)
+        if (bonniePrefab == null)
         {
-            Debug.LogError("No Rangers found in list");
+            Debug.LogError("Bonnie was not found");
             return;
         }
 
-        if (basicPrefabs == null)
+        if (chicaPrefab == null)
         {
-            Debug.LogError("No Basics found in list");
+            Debug.LogError("Chica was not found");
+            return;
+        }
+
+        if (foxyPrefab == null)
+        {
+            Debug.LogError("Foxy was not found");
+            return;
+        }
+
+        if (goldenFreddyPrefab == null)
+        {
+            Debug.LogError("GoldenFreddy was not found");
             return;
         }
 
@@ -64,28 +82,34 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         float rndRoll = Random.Range(0.0f, 1.0f);
 
-        if (rndRoll <= 0.33f)
+        if (rndRoll <= 0.23f)
         {
-            //Spawn Tank
-            int rndPrefab = Random.Range(0, tankPrefabs.Count);
-            GameObject tankToSpawn = tankPrefabs[rndPrefab];
-            Instantiate(tankToSpawn, spawnPoint);
+            //Spawn Freddy
+            Instantiate(freddyPrefab, spawnPoint);
             return;
         }
-        else if (rndRoll <= 0.66f)
+        if (rndRoll <= 0.46f)
         {
-            //Spawn Ranger
-            int rndPrefab = Random.Range(0, rangerPrefabs.Count);
-            GameObject rangerToSpawn = rangerPrefabs[rndPrefab];
-            Instantiate(rangerToSpawn, spawnPoint);
+            //Spawn Bonnie
+            Instantiate(bonniePrefab, spawnPoint);
             return;
         }
-        else if (rndRoll >= 0.66f)
+        if (rndRoll <= 0.69f)
         {
-            //Spawn Basic
-            int rndPrefab = Random.Range(0, basicPrefabs.Count);
-            GameObject basicToSpawn = basicPrefabs[rndPrefab];
-            Instantiate(basicToSpawn, spawnPoint);
+            //Spawn Chica
+            Instantiate(chicaPrefab, spawnPoint);
+            return;
+        }
+        if (rndRoll <= 0.92f)
+        {
+            //Spawn Foxy
+            Instantiate(foxyPrefab, spawnPoint);
+            return;
+        }
+        if (rndRoll <= 1f)
+        {
+            //Spawn GoldenFreddy
+            Instantiate(goldenFreddyPrefab, spawnPoint);
             return;
         }
     }
