@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "62c5c981-eaca-4d75-85ba-ab6547da49f0",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Look",
                     "type": "Value",
                     "id": "38abdc36-8c6b-4d9a-ad9f-b6c0f6184513",
@@ -36,6 +27,60 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "b73aec6a-b5db-4b94-bf3f-2cf076d12fe6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponSelectA",
+                    "type": "Button",
+                    "id": "bb82b50c-3727-43cf-be09-d02e86525bbf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponSelectB",
+                    "type": "Button",
+                    "id": "5aeb2781-5469-41be-8905-52fb28118fef",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponSelectC",
+                    "type": "Button",
+                    "id": "7330f923-692b-4427-8405-dd1ad8b26aa9",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponSelectD",
+                    "type": "Button",
+                    "id": "963c883d-90de-4a67-9973-83b1aa2c95d5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponSelectUP",
+                    "type": "Button",
+                    "id": "b6ce34d6-6c99-4bdf-8cb2-0151d6b801d2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WeaponSelectDOWN",
+                    "type": "Button",
+                    "id": "099edf88-5f70-452c-b4cc-1a33085da000",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -155,28 +200,6 @@
                 },
                 {
                     "name": "",
-                    "id": "f36f1291-c83f-4f71-897a-d81d3342d96d",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "019bad57-f1d6-44ac-a3c5-9bbf8f22c728",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "0c61f4b6-583f-445d-b27d-a871c71ef5bd",
                     "path": "<Mouse>/delta",
                     "interactions": "",
@@ -187,15 +210,59 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "520e75b1-46a5-4f95-9802-3d1601482efe",
-                    "path": "<Gamepad>/rightStick",
+                    "name": "RightJoystick",
+                    "id": "e474c093-fbbd-48f2-b63c-6f9e56d76835",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "c40b8a2c-3d1d-45d4-88c7-3cd5ecdf2f98",
+                    "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Look",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "1e58a3b8-d23a-40ce-8f14-f351a06aba74",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "e7fbd96a-4525-420f-ae26-53e2e035e4e9",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "b4e22ba8-0e5f-4d66-ab85-cafa49b1c210",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -216,6 +283,94 @@
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15902fd1-162c-4c89-a891-59625dd1169a",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSelectA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4cfa3a86-2dbf-4fe5-948b-766fa50d1703",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSelectB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5dbe71a8-98d4-4277-8de4-1366c1c707f8",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSelectC",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7683d095-09b0-4d1e-b609-b111cc913121",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSelectD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f297d838-3a67-46c3-936b-2104f1f53f57",
+                    "path": "<Keyboard>/comma",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSelectUP",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0beaccd0-5d71-4d96-84e1-f8031cd3e259",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSelectUP",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "145c20c5-db8b-48c3-9394-6a4af0a09313",
+                    "path": "<Keyboard>/period",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSelectDOWN",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88b5916e-189d-4626-b6d4-a19d05b54b3e",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WeaponSelectDOWN",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

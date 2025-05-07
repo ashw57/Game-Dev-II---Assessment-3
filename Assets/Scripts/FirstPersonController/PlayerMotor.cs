@@ -1,8 +1,10 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-using System.Collections.Generic;
 using System.Collections;
 
+public enum WeaponSelection
+{
+    SpikedMorningStar, SpikedBaseballBat, Sledgehammer, PipeSlicer
+}
 public class PlayerMotor : MonoBehaviour
 {
     // ------------------- //
@@ -15,6 +17,11 @@ public class PlayerMotor : MonoBehaviour
     private PlayerInput playerInput;
     private PlayerInput.OnFootActions input;
     private Vector3 playerVelocity;
+    [SerializeField]
+    private WeaponSelection weaponSelection;
+    [SerializeField]
+    int weaponValue = 0;
+    bool weaponSelectionIsChanging;
 
     // ------------------- //
     //      VARIABLES      //
@@ -43,19 +50,59 @@ public class PlayerMotor : MonoBehaviour
 
     private bool attacking = false;
     private bool readyToAttack = true;
-    int attackCount;
 
     // ------------------ //
     //     ANIMATIONS     //
     // ------------------ //
 
+    /*
     public const string IDLE = "DS_onehand_idle_A";
     public const string WALK = "DS_onehand_walk";
-    public const string ATTACK1 = "DS_onehand_attack_A";
-    public const string ATTACK2 = "DS_onehand_attack_B";
+    */
+
+    [Header("Sledgehammer Animations")]
+    public const string SHIDLE = "Sledgehammer_Idle";
+    public const string SHWALK = "Sledgehammer_Walk";
+    public const string SHATTACK1 = "SledgehammerAttackA";
+    public const string SHATTACK2 = "SledgehammerAttackB";
+
+    [Header("PipeSlasher Animations")]
+    public const string PSIDLE = "PipeSlasher_Idle";
+    public const string PSWALK = "PipeSlasher_Walk";
+    public const string PSATTACK1 = "PipeSlasherAttackA";
+    public const string PSATTACK2 = "PipeSlasherAttackB";
+
+    [Header("BaseballBat Animations")]
+    public const string SBBIDLE = "SpikedBaseballBat_Idle";
+    public const string SBBWALK = "SpikedBaseballBat_Walk";
+    public const string SBBATTACK1 = "SpikedBaseballBatAttackA";
+    public const string SBBATTACK2 = "SpikedBaseballBatAttackB";
+
+    [Header("Morningstar Animations")]
+    public const string SMSIDLE = "SpikedMorningStar_Walk";
+    public const string SMSWALK = "SpikedMorningStar_Idle";
+    public const string SMSATTACK1 = "SpikedMorningStarAttackA";
+    public const string SMSATTACK2 = "SpikedMorningStarAttackB";
     //public const string BLOCK = "CharacterArmature|Sword_Block";
 
     string currentAnimationState;
+    int smsAttackCount = 0;
+    int sbbAttackCount = 0;
+    int shAttackCount = 0;
+    int psAttackCount = 0;
+
+    // ------------------ //
+    //      Weapons       //
+    // ------------------ //
+
+    [SerializeField]
+    private GameObject spikedMorningStar;
+    [SerializeField]
+    private GameObject spikedBaseballBat;
+    [SerializeField]
+    private GameObject sledgehammer;
+    [SerializeField]
+    private GameObject pipeSlicer;
 
     void Start()
     {
@@ -63,9 +110,11 @@ public class PlayerMotor : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         cam = GetComponentInChildren<Camera>();
         audioSource = GetComponent<AudioSource>();
-
+        
         playerInput = new PlayerInput();
         input = playerInput.OnFoot;
+
+        StartCoroutine(WeaponDrawDelay());
     }
 
     private void Update()
@@ -118,12 +167,13 @@ public class PlayerMotor : MonoBehaviour
 
 
 
-
+    /*
     public void Jump()
     {
         if (isGrounded)
             playerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
     }
+    */
 
     public void Attack()
     {
@@ -137,23 +187,90 @@ public class PlayerMotor : MonoBehaviour
         Invoke(nameof(ResetAttack), attackSpeed);
         Invoke(nameof(AttackRaycast), attackDelay);
 
-        if (audioSource != null)
+        switch (weaponSelection)
         {
-            audioSource.pitch = Random.Range(0.9f, 1.1f);
-            audioSource.PlayOneShot(swordSwing);
-        }
-        else Debug.LogError("AudioSourceNotFound");
+            case WeaponSelection.SpikedMorningStar:
+                if (audioSource != null)
+                {
+                    audioSource.pitch = Random.Range(0.9f, 1.1f);
+                    audioSource.PlayOneShot(swordSwing);
+                }
+                else Debug.LogError("AudioSourceNotFound");
 
-        if(attackCount == 0)
-        {
-            ChangeAnimationState(ATTACK1);
-            attackCount++;
+                if (smsAttackCount == 0)
+                {
+                    ChangeAnimationState(SMSATTACK1);
+                    smsAttackCount++;
+                }
+                else
+                {
+                    ChangeAnimationState(SMSATTACK2);
+                    smsAttackCount = 0;
+                }
+                break;
+
+            case WeaponSelection.SpikedBaseballBat:
+                if (audioSource != null)
+                {
+                    audioSource.pitch = Random.Range(0.9f, 1.1f);
+                    audioSource.PlayOneShot(swordSwing);
+                }
+                else Debug.LogError("AudioSourceNotFound");
+
+                if (sbbAttackCount == 0)
+                {
+                    ChangeAnimationState(SBBATTACK1);
+                    sbbAttackCount++;
+                }
+                else
+                {
+                    ChangeAnimationState(SBBATTACK2);
+                    sbbAttackCount = 0;
+                }
+                break;
+
+            case WeaponSelection.Sledgehammer:
+                if (audioSource != null)
+                {
+                    audioSource.pitch = Random.Range(0.9f, 1.1f);
+                    audioSource.PlayOneShot(swordSwing);
+                }
+                else Debug.LogError("AudioSourceNotFound");
+
+                if (shAttackCount == 0)
+                {
+                    ChangeAnimationState(SHATTACK1);
+                    shAttackCount++;
+                }
+                else
+                {
+                    ChangeAnimationState(SHATTACK2);
+                    shAttackCount = 0;
+                }
+                break;
+
+            case WeaponSelection.PipeSlicer:
+                if (audioSource != null)
+                {
+                    audioSource.pitch = Random.Range(0.9f, 1.1f);
+                    audioSource.PlayOneShot(swordSwing);
+                }
+                else Debug.LogError("AudioSourceNotFound");
+
+                if (psAttackCount == 0)
+                {
+                    ChangeAnimationState(PSATTACK1);
+                    psAttackCount++;
+                }
+                else
+                {
+                    ChangeAnimationState(PSATTACK2);
+                    psAttackCount = 0;
+                }
+                break;
         }
-        else
-        {
-            ChangeAnimationState(ATTACK2);
-            attackCount = 0;
-        }
+
+        
     }
 
     private void ResetAttack()
@@ -198,9 +315,30 @@ public class PlayerMotor : MonoBehaviour
 
         if (!attacking)
         {
-            if (playerVelocity.x == 0 && playerVelocity.z == 0)
-            { ChangeAnimationState(IDLE); }
-            else { ChangeAnimationState(WALK); }
+            switch(weaponSelection)
+            {
+                case WeaponSelection.SpikedMorningStar:
+                    if (playerVelocity.x == 0 && playerVelocity.z == 0)
+                    { ChangeAnimationState(SMSIDLE); }
+                    else { ChangeAnimationState(SMSWALK); }
+                    break;
+                case WeaponSelection.SpikedBaseballBat:
+                    if (playerVelocity.x == 0 && playerVelocity.z == 0)
+                    { ChangeAnimationState(SBBIDLE); }
+                    else { ChangeAnimationState(SBBWALK); }
+                    break;
+                case WeaponSelection.Sledgehammer:
+                    if (playerVelocity.x == 0 && playerVelocity.z == 0)
+                    { ChangeAnimationState(SHIDLE); }
+                    else { ChangeAnimationState(SHWALK); }
+                    break;
+                case WeaponSelection.PipeSlicer:
+                    if (playerVelocity.x == 0 && playerVelocity.z == 0)
+                    { ChangeAnimationState(PSIDLE); }
+                    else { ChangeAnimationState(PSWALK); }
+                    break;
+            }
+            
         }
     }
 
@@ -228,5 +366,83 @@ public class PlayerMotor : MonoBehaviour
         playerVelocity.z = 0f;
     }
 
+    public void SelectWeapon(int value)
+    {
+        switch (value) 
+        {
+            case 0:
+                weaponValue = 0;
+                break;
+            case 1:
+                weaponValue = 1;
+                break;
+            case 2:
+                weaponValue = 2;
+                break;
+            case 3:
+                weaponValue = 3;
+                break;
+            case 4:
+                if (!weaponSelectionIsChanging)
+                    StartCoroutine(BumperWait(0));
+                break;
+            case 5:
+                if (!weaponSelectionIsChanging)
+                    StartCoroutine(BumperWait(1));
+                break;
 
+        }
+        
+        weaponSelection = (WeaponSelection)weaponValue;
+        StartCoroutine(WeaponDrawDelay());
+    }
+    private IEnumerator WeaponDrawDelay()
+    {
+        yield return new WaitForSeconds(0.25f);
+        switch (weaponSelection) 
+        {
+            case WeaponSelection.SpikedMorningStar:
+                spikedBaseballBat.SetActive(false);
+                sledgehammer.SetActive(false);
+                pipeSlicer.SetActive(false);
+                spikedMorningStar.SetActive(true);
+                break;
+            case WeaponSelection.SpikedBaseballBat:
+                spikedBaseballBat.SetActive(true);
+                sledgehammer.SetActive(false);
+                pipeSlicer.SetActive(false);
+                spikedMorningStar.SetActive(false);
+                break;
+            case WeaponSelection.PipeSlicer:
+                spikedBaseballBat.SetActive(false);
+                sledgehammer.SetActive(false);
+                pipeSlicer.SetActive(true);
+                spikedMorningStar.SetActive(false);
+                break;
+            case WeaponSelection.Sledgehammer:
+                spikedBaseballBat.SetActive(false);
+                sledgehammer.SetActive(true);
+                pipeSlicer.SetActive(false);
+                spikedMorningStar.SetActive(false);
+                break;
+        }
+    }
+
+    private IEnumerator BumperWait(int i)
+    {
+        weaponSelectionIsChanging = true;
+        if (i == 0) 
+        {
+            ++weaponValue;
+            if (weaponValue == 4)
+            { weaponValue = 0; }
+        }
+        else
+        {
+            --weaponValue;
+            if (weaponValue == -1) { weaponValue = 3; }
+        }
+        yield return new WaitForSeconds(0.5f);
+        weaponSelectionIsChanging = false;
+    }
 }

@@ -101,15 +101,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""62c5c981-eaca-4d75-85ba-ab6547da49f0"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""38abdc36-8c6b-4d9a-ad9f-b6c0f6184513"",
@@ -122,6 +113,60 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""b73aec6a-b5db-4b94-bf3f-2cf076d12fe6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSelectA"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb82b50c-3727-43cf-be09-d02e86525bbf"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSelectB"",
+                    ""type"": ""Button"",
+                    ""id"": ""5aeb2781-5469-41be-8905-52fb28118fef"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSelectC"",
+                    ""type"": ""Button"",
+                    ""id"": ""7330f923-692b-4427-8405-dd1ad8b26aa9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSelectD"",
+                    ""type"": ""Button"",
+                    ""id"": ""963c883d-90de-4a67-9973-83b1aa2c95d5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSelectUP"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6ce34d6-6c99-4bdf-8cb2-0151d6b801d2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponSelectDOWN"",
+                    ""type"": ""Button"",
+                    ""id"": ""099edf88-5f70-452c-b4cc-1a33085da000"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -241,28 +286,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f36f1291-c83f-4f71-897a-d81d3342d96d"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""019bad57-f1d6-44ac-a3c5-9bbf8f22c728"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""0c61f4b6-583f-445d-b27d-a871c71ef5bd"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
@@ -273,15 +296,59 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""520e75b1-46a5-4f95-9802-3d1601482efe"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""name"": ""RightJoystick"",
+                    ""id"": ""e474c093-fbbd-48f2-b63c-6f9e56d76835"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""c40b8a2c-3d1d-45d4-88c7-3cd5ecdf2f98"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Look"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""1e58a3b8-d23a-40ce-8f14-f351a06aba74"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e7fbd96a-4525-420f-ae26-53e2e035e4e9"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b4e22ba8-0e5f-4d66-ab85-cafa49b1c210"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -304,6 +371,94 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15902fd1-162c-4c89-a891-59625dd1169a"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSelectA"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4cfa3a86-2dbf-4fe5-948b-766fa50d1703"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSelectB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5dbe71a8-98d4-4277-8de4-1366c1c707f8"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSelectC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7683d095-09b0-4d1e-b609-b111cc913121"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSelectD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f297d838-3a67-46c3-936b-2104f1f53f57"",
+                    ""path"": ""<Keyboard>/comma"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSelectUP"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0beaccd0-5d71-4d96-84e1-f8031cd3e259"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSelectUP"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""145c20c5-db8b-48c3-9394-6a4af0a09313"",
+                    ""path"": ""<Keyboard>/period"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSelectDOWN"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""88b5916e-189d-4626-b6d4-a19d05b54b3e"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponSelectDOWN"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -313,9 +468,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         // OnFoot
         m_OnFoot = asset.FindActionMap("OnFoot", throwIfNotFound: true);
         m_OnFoot_Movement = m_OnFoot.FindAction("Movement", throwIfNotFound: true);
-        m_OnFoot_Jump = m_OnFoot.FindAction("Jump", throwIfNotFound: true);
         m_OnFoot_Look = m_OnFoot.FindAction("Look", throwIfNotFound: true);
         m_OnFoot_Attack = m_OnFoot.FindAction("Attack", throwIfNotFound: true);
+        m_OnFoot_WeaponSelectA = m_OnFoot.FindAction("WeaponSelectA", throwIfNotFound: true);
+        m_OnFoot_WeaponSelectB = m_OnFoot.FindAction("WeaponSelectB", throwIfNotFound: true);
+        m_OnFoot_WeaponSelectC = m_OnFoot.FindAction("WeaponSelectC", throwIfNotFound: true);
+        m_OnFoot_WeaponSelectD = m_OnFoot.FindAction("WeaponSelectD", throwIfNotFound: true);
+        m_OnFoot_WeaponSelectUP = m_OnFoot.FindAction("WeaponSelectUP", throwIfNotFound: true);
+        m_OnFoot_WeaponSelectDOWN = m_OnFoot.FindAction("WeaponSelectDOWN", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -397,9 +557,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_OnFoot;
     private List<IOnFootActions> m_OnFootActionsCallbackInterfaces = new List<IOnFootActions>();
     private readonly InputAction m_OnFoot_Movement;
-    private readonly InputAction m_OnFoot_Jump;
     private readonly InputAction m_OnFoot_Look;
     private readonly InputAction m_OnFoot_Attack;
+    private readonly InputAction m_OnFoot_WeaponSelectA;
+    private readonly InputAction m_OnFoot_WeaponSelectB;
+    private readonly InputAction m_OnFoot_WeaponSelectC;
+    private readonly InputAction m_OnFoot_WeaponSelectD;
+    private readonly InputAction m_OnFoot_WeaponSelectUP;
+    private readonly InputAction m_OnFoot_WeaponSelectDOWN;
     /// <summary>
     /// Provides access to input actions defined in input action map "OnFoot".
     /// </summary>
@@ -416,10 +581,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Movement => m_Wrapper.m_OnFoot_Movement;
         /// <summary>
-        /// Provides access to the underlying input action "OnFoot/Jump".
-        /// </summary>
-        public InputAction @Jump => m_Wrapper.m_OnFoot_Jump;
-        /// <summary>
         /// Provides access to the underlying input action "OnFoot/Look".
         /// </summary>
         public InputAction @Look => m_Wrapper.m_OnFoot_Look;
@@ -427,6 +588,30 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "OnFoot/Attack".
         /// </summary>
         public InputAction @Attack => m_Wrapper.m_OnFoot_Attack;
+        /// <summary>
+        /// Provides access to the underlying input action "OnFoot/WeaponSelectA".
+        /// </summary>
+        public InputAction @WeaponSelectA => m_Wrapper.m_OnFoot_WeaponSelectA;
+        /// <summary>
+        /// Provides access to the underlying input action "OnFoot/WeaponSelectB".
+        /// </summary>
+        public InputAction @WeaponSelectB => m_Wrapper.m_OnFoot_WeaponSelectB;
+        /// <summary>
+        /// Provides access to the underlying input action "OnFoot/WeaponSelectC".
+        /// </summary>
+        public InputAction @WeaponSelectC => m_Wrapper.m_OnFoot_WeaponSelectC;
+        /// <summary>
+        /// Provides access to the underlying input action "OnFoot/WeaponSelectD".
+        /// </summary>
+        public InputAction @WeaponSelectD => m_Wrapper.m_OnFoot_WeaponSelectD;
+        /// <summary>
+        /// Provides access to the underlying input action "OnFoot/WeaponSelectUP".
+        /// </summary>
+        public InputAction @WeaponSelectUP => m_Wrapper.m_OnFoot_WeaponSelectUP;
+        /// <summary>
+        /// Provides access to the underlying input action "OnFoot/WeaponSelectDOWN".
+        /// </summary>
+        public InputAction @WeaponSelectDOWN => m_Wrapper.m_OnFoot_WeaponSelectDOWN;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -456,15 +641,30 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
+            @WeaponSelectA.started += instance.OnWeaponSelectA;
+            @WeaponSelectA.performed += instance.OnWeaponSelectA;
+            @WeaponSelectA.canceled += instance.OnWeaponSelectA;
+            @WeaponSelectB.started += instance.OnWeaponSelectB;
+            @WeaponSelectB.performed += instance.OnWeaponSelectB;
+            @WeaponSelectB.canceled += instance.OnWeaponSelectB;
+            @WeaponSelectC.started += instance.OnWeaponSelectC;
+            @WeaponSelectC.performed += instance.OnWeaponSelectC;
+            @WeaponSelectC.canceled += instance.OnWeaponSelectC;
+            @WeaponSelectD.started += instance.OnWeaponSelectD;
+            @WeaponSelectD.performed += instance.OnWeaponSelectD;
+            @WeaponSelectD.canceled += instance.OnWeaponSelectD;
+            @WeaponSelectUP.started += instance.OnWeaponSelectUP;
+            @WeaponSelectUP.performed += instance.OnWeaponSelectUP;
+            @WeaponSelectUP.canceled += instance.OnWeaponSelectUP;
+            @WeaponSelectDOWN.started += instance.OnWeaponSelectDOWN;
+            @WeaponSelectDOWN.performed += instance.OnWeaponSelectDOWN;
+            @WeaponSelectDOWN.canceled += instance.OnWeaponSelectDOWN;
         }
 
         /// <summary>
@@ -479,15 +679,30 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
+            @WeaponSelectA.started -= instance.OnWeaponSelectA;
+            @WeaponSelectA.performed -= instance.OnWeaponSelectA;
+            @WeaponSelectA.canceled -= instance.OnWeaponSelectA;
+            @WeaponSelectB.started -= instance.OnWeaponSelectB;
+            @WeaponSelectB.performed -= instance.OnWeaponSelectB;
+            @WeaponSelectB.canceled -= instance.OnWeaponSelectB;
+            @WeaponSelectC.started -= instance.OnWeaponSelectC;
+            @WeaponSelectC.performed -= instance.OnWeaponSelectC;
+            @WeaponSelectC.canceled -= instance.OnWeaponSelectC;
+            @WeaponSelectD.started -= instance.OnWeaponSelectD;
+            @WeaponSelectD.performed -= instance.OnWeaponSelectD;
+            @WeaponSelectD.canceled -= instance.OnWeaponSelectD;
+            @WeaponSelectUP.started -= instance.OnWeaponSelectUP;
+            @WeaponSelectUP.performed -= instance.OnWeaponSelectUP;
+            @WeaponSelectUP.canceled -= instance.OnWeaponSelectUP;
+            @WeaponSelectDOWN.started -= instance.OnWeaponSelectDOWN;
+            @WeaponSelectDOWN.performed -= instance.OnWeaponSelectDOWN;
+            @WeaponSelectDOWN.canceled -= instance.OnWeaponSelectDOWN;
         }
 
         /// <summary>
@@ -536,13 +751,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMovement(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnJump(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "Look" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -556,5 +764,47 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WeaponSelectA" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWeaponSelectA(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WeaponSelectB" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWeaponSelectB(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WeaponSelectC" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWeaponSelectC(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WeaponSelectD" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWeaponSelectD(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WeaponSelectUP" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWeaponSelectUP(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "WeaponSelectDOWN" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWeaponSelectDOWN(InputAction.CallbackContext context);
     }
 }
