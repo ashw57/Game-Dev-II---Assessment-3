@@ -42,7 +42,9 @@ public class Enemy : GameBehaviour
         }
         else { print("Couldn't find player"); }
 
-        agent.speed = mySpeed;
+        
+
+        Initiate();
     }
 
     public void Initiate()
@@ -87,6 +89,7 @@ public class Enemy : GameBehaviour
                 myDamage = 100;
                 return;
         }
+        agent.speed = mySpeed;
     }
 
     public void Update()

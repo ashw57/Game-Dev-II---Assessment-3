@@ -399,31 +399,25 @@ public class PlayerMotor : MonoBehaviour
     private IEnumerator WeaponDrawDelay()
     {
         yield return new WaitForSeconds(0.25f);
+
+        spikedBaseballBat.SetActive(false);
+        sledgehammer.SetActive(false);
+        pipeSlicer.SetActive(false);
+        spikedMorningStar.SetActive(false);
+
         switch (weaponSelection) 
         {
             case WeaponSelection.SpikedMorningStar:
-                spikedBaseballBat.SetActive(false);
-                sledgehammer.SetActive(false);
-                pipeSlicer.SetActive(false);
                 spikedMorningStar.SetActive(true);
                 break;
             case WeaponSelection.SpikedBaseballBat:
                 spikedBaseballBat.SetActive(true);
-                sledgehammer.SetActive(false);
-                pipeSlicer.SetActive(false);
-                spikedMorningStar.SetActive(false);
                 break;
             case WeaponSelection.PipeSlicer:
-                spikedBaseballBat.SetActive(false);
-                sledgehammer.SetActive(false);
                 pipeSlicer.SetActive(true);
-                spikedMorningStar.SetActive(false);
                 break;
             case WeaponSelection.Sledgehammer:
-                spikedBaseballBat.SetActive(false);
                 sledgehammer.SetActive(true);
-                pipeSlicer.SetActive(false);
-                spikedMorningStar.SetActive(false);
                 break;
         }
     }
