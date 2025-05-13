@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum GameState
@@ -12,7 +11,11 @@ public class GameManager : Singleton<GameManager>
 {
     public GameState gameState;
 
-    
+    // ------------------ //
+    //       Health       //
+    // ------------------ //
+
+    private int health = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +26,16 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+
+
+    public void OnHit(int _damage)
+    {
+        health -= _damage;
+        if (health <= 0)
+        {
+            gameState = GameState.Death;
+        }
     }
 }

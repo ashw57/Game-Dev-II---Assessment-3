@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public enum WeaponSelection
 {
     SpikedMorningStar, SpikedBaseballBat, Sledgehammer, PipeSlicer
 }
-public class PlayerMotor : MonoBehaviour
+public class PlayerMotor : GameBehaviour
 {
     // ------------------- //
     //      REFERENCES     //
@@ -79,8 +80,8 @@ public class PlayerMotor : MonoBehaviour
     public const string SBBATTACK2 = "SpikedBaseballBatAttackB";
 
     [Header("Morningstar Animations")]
-    public const string SMSIDLE = "SpikedMorningStar_Walk";
-    public const string SMSWALK = "SpikedMorningStar_Idle";
+    public const string SMSIDLE = "SpikedMorningStar_Idle";
+    public const string SMSWALK = "SpikedMorningStar_Walk";
     public const string SMSATTACK1 = "SpikedMorningStarAttackA";
     public const string SMSATTACK2 = "SpikedMorningStarAttackB";
     //public const string BLOCK = "CharacterArmature|Sword_Block";

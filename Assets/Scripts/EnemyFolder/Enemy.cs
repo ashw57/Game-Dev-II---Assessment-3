@@ -192,6 +192,23 @@ public class Enemy : GameBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            if (enemyType == EnemyType.GoldenFreddy)
+            {
+                _GM.OnHit(2);
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                _GM.OnHit(1);
+                Destroy(collision.gameObject);
+            }
+        }
+    }
+
     public void Hit(int _inDamage)
     {
         myHealth -= _inDamage;
