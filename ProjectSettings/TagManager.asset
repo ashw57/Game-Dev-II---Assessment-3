@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - enemy
   - goldenfreddy
+  - Weapon
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,5 @@
+using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public enum EnemyType
@@ -32,6 +32,7 @@ public class EnemyManager : Singleton<EnemyManager>
     void Start()
     {
         FillSpawnPoints();
+        StartCoroutine(EnemySpawner());
     }
 
     private void FillSpawnPoints()
@@ -112,6 +113,15 @@ public class EnemyManager : Singleton<EnemyManager>
             Instantiate(goldenFreddyPrefab, spawnPoint);
             return;
         }
+    }
+
+    IEnumerator EnemySpawner()
+    {
+        int rndlist = Random.Range(0, spawnPoints.Count);
+        Transform spawnPoint = spawnPoints[rndlist];
+        SpawnRandomEnemyType(spawnPoint);
+        yield return new WaitForSeconds(5);
+        StartCoroutine(EnemySpawner());
     }
 
 }

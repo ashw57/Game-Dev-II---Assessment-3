@@ -11,8 +11,6 @@ public class Enemy : GameBehaviour
     private int myHealth;
     [SerializeField]
     private float mySpeed;
-    [SerializeField] 
-    private int myDamage;
     [SerializeField]
     private int myMaxHealth;
 
@@ -31,6 +29,11 @@ public class Enemy : GameBehaviour
     private float freddyWaitTimer;
     private bool freddyWaitingAtRange = false;
     private bool freddyClosingIn = false;
+
+    [SerializeField]
+    private ParticleSystem _PS;
+    
+
 
     public void Start()
     {
@@ -55,7 +58,6 @@ public class Enemy : GameBehaviour
                 {
                     myHealth = 100;
                     mySpeed = 100;
-                    myDamage = 40;
 
                     freddyWaitTimer = freddyWaitDuration;
 
@@ -65,14 +67,12 @@ public class Enemy : GameBehaviour
                 {
                     myHealth = 300;
                     mySpeed = 150;
-                    myDamage = 30;
                     return;
                 }
             case EnemyType.Chica: 
                 {
                     myHealth = 50;
                     mySpeed = 100;
-                    myDamage = 20;
                     chicaTimer = chicaWanderTimer;
                     return;
                 }
@@ -80,13 +80,11 @@ public class Enemy : GameBehaviour
                 {
                     myHealth = 50;
                     mySpeed = 200;
-                    myDamage = 15;
                     return;
                 }
             case EnemyType.GoldenFreddy:
                 myHealth = 200;
                 mySpeed = 50;
-                myDamage = 100;
                 return;
         }
         agent.speed = mySpeed;
@@ -133,12 +131,13 @@ public class Enemy : GameBehaviour
                 break;
 
             case EnemyType.Foxy:
-                int foxyDashRange = 20;
-                float dashSpeed = mySpeed * 2;
+                int foxyDashRange = 10;
+                float dashSpeed = mySpeed * 1.1f;
                 if (playerTransform != null)
                 {
                     agent.SetDestination(playerTransform.position); // Move toward the player
                 }
+
                 if (distance < foxyDashRange)
                 {
                     agent.speed = dashSpeed;
@@ -192,36 +191,40 @@ public class Enemy : GameBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.CompareTag("Player"))
+        Debug.Log("collision " + other.name);
+
+        if (other.CompareTag("Player"))
         {
             if (enemyType == EnemyType.GoldenFreddy)
             {
                 _GM.OnHit(2);
-                Destroy(collision.gameObject);
+                DestroySelf();
             }
             else
             {
                 _GM.OnHit(1);
-                Destroy(collision.gameObject);
+                DestroySelf();
+            } 
+        }
+
+
+
+        if (other.CompareTag("Weapon"))
+        {
+            if (enemyType == EnemyType.GoldenFreddy)
+            {
+                _GM.GivePoints(200);
+                DestroySelf();
+            }
+            else
+            {
+                _GM.GivePoints(100);
+                DestroySelf();
             }
         }
-    }
-
-    public void Hit(int _inDamage)
-    {
-        myHealth -= _inDamage;
-        if (myHealth <= 0) 
-        {
-            myHealth = 0;
-            Die();
-        }
-    }
-
-    public void Die() 
-    {
-        Destroy(gameObject);
+        
     }
 
     Vector3 RandomNavmeshLocation(float radius)
@@ -242,6 +245,12 @@ public class Enemy : GameBehaviour
         yield return new WaitForSeconds(0.25f);
         myHealth++;
         chicaIsHealing = false;
+    }
+
+    private void DestroySelf()
+    {
+        Instantiate(_PS,transform); 
+        Destroy(gameObject);
     }
 
 }

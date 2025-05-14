@@ -6,7 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Prefabs/fnaf-movie-pizzaria-inside/source/Pizzaria.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: b850c51aae84fa142bee298e79ba15d3
+  - enabled: 1
+    path: Assets/Scenes/Pizzaria.unity
     guid: 91001afe495337d41a04be7ea1d43860
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: f1f4358188a595041948ce0bf340f63e
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
